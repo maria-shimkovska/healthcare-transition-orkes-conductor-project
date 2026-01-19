@@ -11,24 +11,15 @@ This project is a Node.js starter template that demonstrates how to build and ru
 
 ## Project Structure
 
-- `package.json` – Project dependencies and scripts
-- `README.md` – Project documentation and setup instructions
-- `create-workflow.mjs` – Script for registering workflows and tasks with Conductor
-- `Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg` – Project image for README
-- `ConductorWorkers/` – Worker entry points for Conductor
-  - `workers.js`
-- `LangChainAgents/` – Agent definitions
-  - `DoctorFinder.js`
-  - `EmailDrafter.js`
-  - `MedicalSystemNavigator.js`
-  - `PrescriptionTransitionManager.js`
-- `workflows/` – Workflow and form definitions
-  - `healthcare-relocation-workflow.json`
-  - `human-form.json`
-  - `prompts/` – Prompt templates for workflows
-    - `assemble-health-plan.json`
-    - `combine-answers.json`
-    - `medical-user-intake.json`
+Below is a quick overview of the main files and folders you'll see in this project. Each item is briefly explained so you know what it's for at a glance:
+
+- `create-workflow.mjs` – Script to register the workflows and tasks with Conductor
+- `ConductorWorkers/` – Contains the main worker entry point (`workers.js`) that connects your agents to Conductor
+- `LangChainAgents/` – JavaScript files that define each specialized agent (doctor finder, email drafter, etc.)
+- `workflows/` – Workflow and form definitions for Conductor, plus prompt templates used by the workflows
+  - `prompts/` – Subfolder with reusable prompt templates for agent tasks
+
+This structure keeps code, configuration, and workflow definitions organized and easy to find.
 
 ## Prerequisites
 
