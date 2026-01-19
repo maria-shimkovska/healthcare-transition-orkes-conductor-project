@@ -1,4 +1,4 @@
-# Node Starter – Healthcare Agents & Conductor Workers
+# Healthcare Agents & Conductor Workers
 
 ![Orchestrating LangChain Agents](Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg)
 
@@ -105,10 +105,3 @@ Once registered, your workers will be recognized by Conductor and will poll for 
 - To add or modify agents, edit the files in `LangChainAgents/`.
 - To add new workers or change polling behavior, edit `ConductorWorkers/workers.js`.
 
-## License
-
-MIT (or specify your license here)
-
----
-
-For questions or support, contact the project maintainer.
