@@ -1,4 +1,4 @@
-# Healthcare Agents & Conductor Workers
+# Node Starter – Healthcare Agents & Conductor Workers
 
 ![Orchestrating LangChain Agents](Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg)
 
@@ -54,6 +54,7 @@ This structure keeps code, configuration, and workflow definitions organized and
   ```zsh
   export OPENAI_API_KEY=<your-openai-api-key>
   ```
+
 ## Running the Workers
 
 Start the agent workers (they will connect to Conductor and begin polling for tasks):
@@ -147,8 +148,13 @@ CONDUCTOR_KEY_SECRET=...
 - When a workflow in Conductor schedules a task (e.g., `healthcare_provider_finder`), the corresponding agent is invoked.
 - Agents use OpenAI (via LangChain) and, where needed, call external APIs for up-to-date information.
 
+## Example Workflow Visualization
+
+When you register the healthcare relocation workflow in Orkes Conductor, it should look similar to the image below:
+
+![Healthcare Relocation Workflow Example](orkes-healthcare-relocation-workflow.png)
+
 ## Customization
 
 - To add or modify agents, edit the files in `LangChainAgents/`.
 - To add new workers or change polling behavior, edit `ConductorWorkers/workers.js`.
-
