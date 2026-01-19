@@ -12,12 +12,23 @@ This project is a Node.js starter template that demonstrates how to build and ru
 ## Project Structure
 
 - `package.json` – Project dependencies and scripts
-- `ConductorWorkers/workers.js` – Main entry point; registers and runs all agent workers with Orkes Conductor
-- `LangChainAgents/` – Contains the agent definitions:
+- `README.md` – Project documentation and setup instructions
+- `create-workflow.mjs` – Script for registering workflows and tasks with Conductor
+- `Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg` – Project image for README
+- `ConductorWorkers/` – Worker entry points for Conductor
+  - `workers.js`
+- `LangChainAgents/` – Agent definitions
   - `DoctorFinder.js`
   - `EmailDrafter.js`
   - `MedicalSystemNavigator.js`
   - `PrescriptionTransitionManager.js`
+- `workflows/` – Workflow and form definitions
+  - `healthcare-relocation-workflow.json`
+  - `human-form.json`
+  - `prompts/` – Prompt templates for workflows
+    - `assemble-health-plan.json`
+    - `combine-answers.json`
+    - `medical-user-intake.json`
 
 ## Prerequisites
 
