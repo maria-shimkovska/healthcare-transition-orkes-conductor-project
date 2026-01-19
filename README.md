@@ -94,6 +94,48 @@ You can register these tasks:
 
 Once registered, your workers will be recognized by Conductor and will poll for work as soon as you start them.
 
+## Workflow Registration Script: `create-workflow.mjs`
+
+This project includes a utility script, `create-workflow.mjs`, to help you register your workflow definitions and required task types with Orkes Conductor automatically.
+
+### What does it do?
+- Reads workflow JSON files (from `ConductorWorkflows/` by default)
+- Registers all SIMPLE task types found in those workflows (auto-creates them if missing)
+- Registers any required HUMAN task form templates (if referenced)
+- Registers the workflow definitions themselves
+- Supports dry-run/plan mode and overwrite options
+
+### Usage
+From the project root, run:
+
+```zsh
+node create-workflow.mjs [options]
+```
+
+**Options:**
+- `--plan` or `--dry-run` – Show what would be registered, but make no changes
+- `--no-overwrite` – Do not overwrite existing workflow definitions
+- `--workflows-dir <dir>` – Specify a custom directory for workflow JSON files (default: `./ConductorWorkflows`)
+- `[file.json]` – Register a single workflow file instead of all in the directory
+
+**Example:**
+```zsh
+node create-workflow.mjs --plan
+```
+
+### Environment Variables
+The script uses your `.env` file for Conductor connection details. Make sure you have:
+```
+CONDUCTOR_SERVER_URL=...
+CONDUCTOR_KEY_ID=...
+CONDUCTOR_KEY_SECRET=...
+```
+
+### When to use this script
+- After adding or editing workflow JSON files
+- When you want to ensure all required task types and forms are registered in Conductor
+- To automate setup for new environments
+
 ## How It Works
 
 - Each agent is registered as a worker for a specific task type in Conductor.
