@@ -193,3 +193,19 @@ When you register the healthcare relocation workflow in Orkes Conductor, it shou
 
 - To add or modify agents, edit the files in `LangChainAgents/`.
 - To add new workers or change polling behavior, edit `ConductorWorkers/workers.js`.
+
+## Using Individual Agents & Creating Your Own Flow
+
+You don't have to use the full workflow provided. It's easy to register just the agents you want and build your own custom flow in Orkes Conductor.
+
+**How to get started:**
+1. **Register the worker tasks** in Orkes Conductor (UI or SDK), making sure the names match those in the agent code (e.g., `healthcare_provider_finder`, `communication_drafter`, etc.).
+2. **Run the worker code**:
+   ```zsh
+   node ConductorWorkers/workers.js
+   ```
+3. **Create a free account** in the Orkes Conductor Developer Edition ([https://developer.orkescloud.com/](https://developer.orkescloud.com/)).
+4. **Add one agent at a time** as a worker task in Conductor and test it. You can start with just one agent, see how it works, and then add more agents as needed.
+5. **Design your own workflow** in the Conductor UI, connecting the agents in any order or logic you prefer.
+
+This flexible approach lets you experiment, test, and build up your automation step by step, using only the agents and flows you need.
