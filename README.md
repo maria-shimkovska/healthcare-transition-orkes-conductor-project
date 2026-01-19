@@ -116,7 +116,7 @@ Once registered, your workers will be recognized by Conductor and will poll for 
 This project includes a utility script, `create-workflow.mjs`, to help you register your workflow definitions and required task types with Orkes Conductor automatically.
 
 ### What does it do?
-- Reads workflow JSON files (from `ConductorWorkflows/` by default)
+- Reads workflow JSON files (from `workflows/` by default)
 - Registers all SIMPLE task types found in those workflows (auto-creates them if missing)
 - Registers any required HUMAN task form templates (if referenced)
 - Registers the workflow definitions themselves
