@@ -11,13 +11,22 @@ This project is a Node.js starter template that demonstrates how to build and ru
 
 ## Project Structure
 
-Below is a quick overview of the main files and folders you'll see in this project. Each item is briefly explained so you know what it's for at a glance:
+Here's a quick overview of the main files and folders you'll see in this project, with a short explanation for each:
 
-- `create-workflow.mjs` – Script to register the workflows and tasks with Conductor
+- `package.json` – Project dependencies and npm scripts
+- `README.md` – Project documentation and setup guide
+- `create-workflow.mjs` – Script to register workflows and tasks with Orkes Conductor
+- `Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg` – Image used in the README
+- `orkes-healthcare-relocation-workflow.png` – Example workflow visualization for Orkes Conductor
 - `ConductorWorkers/` – Contains the main worker entry point (`workers.js`) that connects your agents to Conductor
 - `LangChainAgents/` – JavaScript files that define each specialized agent (doctor finder, email drafter, etc.)
-- `workflows/` – Workflow and form definitions for Conductor, plus prompt templates used by the workflows
+- `forms/` – Contains form definitions for HUMAN tasks (e.g., `human-form.json`)
+- `workflows/` – Workflow definitions and prompt templates for Conductor
+  - `healthcare-relocation-workflow.json` – Main workflow definition
   - `prompts/` – Subfolder with reusable prompt templates for agent tasks
+    - `assemble-health-plan.json`
+    - `combine-answers.json`
+    - `medical-user-intake.json`
 
 This structure keeps code, configuration, and workflow definitions organized and easy to find.
 
@@ -147,6 +156,30 @@ CONDUCTOR_KEY_SECRET=...
 - Each agent is registered as a worker for a specific task type in Conductor.
 - When a workflow in Conductor schedules a task (e.g., `healthcare_provider_finder`), the corresponding agent is invoked.
 - Agents use OpenAI (via LangChain) and, where needed, call external APIs for up-to-date information.
+
+## Required LLM Prompts for Workflow Registration
+
+The Orkes Conductor SDK does not currently support registering LLM prompts directly. You will need to manually create the following three prompts in the Orkes Conductor UI, making sure the names match exactly as used in the workflow definitions:
+
+### 1. MedicalUserIntakeAnalyzer
+- **Name:** MedicalUserIntakeAnalyzer
+- **Description:** Prompt to analyze a user's relocation query and determine if you have enough information for the downstream agents to help them effectively.
+- **Template:**
+  *(See `workflows/prompts/medical-user-intake.json` for the full template)*
+
+### 2. CombineAnswers
+- **Name:** CombineAnswers
+- **Description:** Combine two sources of information and create a more cohesive info to pass later on to the rest of the agents.
+- **Template:**
+  *(See `workflows/prompts/combine-answers.json` for the full template)*
+
+### 3. AssembleHealthPlan
+- **Name:** AssembleHealthPlan
+- **Description:** Assemble a health plan report using the outputs from the three agents and the user's original query.
+- **Template:**
+  *(See `workflows/prompts/assemble-health-plan.json` for the full template)*
+
+**Tip:** You can copy the full template from each JSON file in `workflows/prompts/` and paste it into the Orkes Conductor UI when creating each prompt. Make sure the prompt names match exactly, or the workflow will not be able to find and use them.
 
 ## Example Workflow Visualization
 

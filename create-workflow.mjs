@@ -7,7 +7,7 @@ import { orkesConductorClient, MetadataClient, TemplateClient } from "@io-orkes/
 
 // Load environment variables from .env file
 dotenv.config();
-const REQUIRED_ENV = ["CONDUCTOR_SERVER_URL", "CONDUCTOR_KEY_ID", "CONDUCTOR_KEY_SECRET"];
+const REQUIRED_ENV = ["CONDUCTOR_SERVER_URL", "CONDUCTOR_AUTH_KEY", "CONDUCTOR_AUTH_SECRET"];
 
 // Defaults for auto-created TaskDefs (when SIMPLE tasks are discovered)
 const DEFAULT_TASKDEF = {
@@ -28,7 +28,7 @@ function requireEnv() {
 // Main script
 function parseArgs(argv) {
   // Usage:
-  //   node scripts/register-workflows.mjs [--plan] [--no-overwrite] [--workflows-dir ./workflows] [file.json]
+  //   node create-workflows.mjs [--plan] [--no-overwrite] [--workflows-dir ./workflows] [file.json]
   const args = {
     plan: false,
     overwrite: true,
@@ -54,6 +54,7 @@ function parseArgs(argv) {
   return args;
 }
 
+// -------------------- Workflow readers --------------------
 // Read all JSON files from a directory and parse them as workflow definitions
 async function readWorkflowJsonFiles(dir) {
   const abs = path.resolve(dir);
@@ -218,8 +219,8 @@ async function main() {
 
   const client = await orkesConductorClient({
     serverUrl: process.env.CONDUCTOR_SERVER_URL,
-    keyId: process.env.CONDUCTOR_KEY_ID,
-    keySecret: process.env.CONDUCTOR_KEY_SECRET,
+    keyId: process.env.CONDUCTOR_AUTH_KEY,
+    keySecret: process.env.CONDUCTOR_AUTH_SECRET,
   });
 
   const metadata = new MetadataClient(client);
