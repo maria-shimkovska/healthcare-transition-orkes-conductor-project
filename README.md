@@ -1,8 +1,10 @@
-# Node Starter – Healthcare Agents & Conductor Workers
+# Orkes Conductor Project with LangChain Agents
 
 ![Orchestrating LangChain Agents](Orchestrating-LangChain-Agents-for-Production-with-Orkes-Conductor_RS-Edit.jpg)
 
-This project is a Node.js starter template that demonstrates how to build and run AI-powered agents for healthcare-related tasks, integrated with Orkes Conductor for workflow automation. It includes several specialized agents for:
+This is an Orkes Conductor project that integrates several LangChain agents to automate healthcare-related workflows. The project demonstrates how to orchestrate AI-powered agents for tasks such as finding healthcare providers, drafting medical communications, navigating healthcare systems, and managing prescription transitions—all coordinated through Orkes Conductor workflows.
+
+It includes several specialized agents for:
 
 - **Healthcare Provider Finder**: Finds English-speaking primary care doctors (GPs) in the Netherlands.
 - **Medical Email Drafter**: Drafts professional, administrative emails for medical purposes (e.g., appointment requests, prescription refills).
