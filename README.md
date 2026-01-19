@@ -23,9 +23,9 @@ This project is a Node.js starter template that demonstrates how to build and ru
 
 - **Node.js** (v18+ recommended)
 - **npm** (comes with Node.js)
-- Access to an [Orkes Conductor](https://orkes.io/) server (cloud or local)
+- Access to an [Orkes Conductor](https://orkes.io/) server (cloud or local). To get started quickly, create a free account for the Developer Edition at [https://developer.orkescloud.com/](https://developer.orkescloud.com/). After signing up, obtain your application credentials by navigating to **Access Control > Application** in the Orkes Cloud dashboard. Use these credentials to configure your connection to Conductor.
 - API keys for Orkes Conductor (set as environment variables)
-- (Optional) OpenAI API key for advanced LLM features
+- [OpenAI API key](https://platform.openai.com/api-keys). Sign up or log in to your OpenAI account and generate an API key at this link.
 
 ## Setup
 
@@ -57,7 +57,42 @@ Start the agent workers (they will connect to Conductor and begin polling for ta
 node ConductorWorkers/workers.js
 ```
 
-You should see a message like `Connected to Conductor ✅` if the connection is successful.
+You should see output like this if everything is working and the workers are polling for work:
+
+```
+Connected to Conductor ✅
+INFO TaskWorker healthcare_provider_finder initialized with concurrency of 10 and poll interval of 300
+INFO TaskWorker communication_drafter initialized with concurrency of 10 and poll interval of 300
+INFO TaskWorker medical_system_navigator initialized with concurrency of 10 and poll interval of 300
+INFO TaskWorker prescription_transition_manager initialized with concurrency of 10 and poll interval of 300
+```
+
+This means the workers are polling for work from Conductor.
+
+## Registering Worker Tasks in Conductor
+
+Before your workers can process tasks, you must register each worker task in Conductor. This tells Conductor that these workers exist and are available to handle work. Registration can be done through the Conductor UI or programmatically using the Conductor SDK.
+
+**Important:** The name of each worker task in Conductor must exactly match the `taskDefName` specified in your worker files. This is how Conductor knows which worker to assign to which task.
+
+**Examples:**
+- In `ConductorWorkers/workers.js`, you will find workers like:
+  - `taskDefName: 'healthcare_provider_finder'`
+  - `taskDefName: 'communication_drafter'`
+  - `taskDefName: 'medical_system_navigator'`
+  - `taskDefName: 'prescription_transition_manager'`
+
+When registering tasks in Conductor, use these exact names:
+- `healthcare_provider_finder`
+- `communication_drafter`
+- `medical_system_navigator`
+- `prescription_transition_manager`
+
+You can register these tasks:
+- **Via the Conductor UI:** Go to the Task Definitions section and add each task by name.
+- **Via the Conductor SDK:** Use the SDK's task registration methods to define each task by name.
+
+Once registered, your workers will be recognized by Conductor and will poll for work as soon as you start them.
 
 ## How It Works
 
