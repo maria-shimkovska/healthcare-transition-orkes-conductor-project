@@ -36,7 +36,7 @@ This project is a Node.js starter template that demonstrates how to build and ru
 - **npm** (comes with Node.js)
 - Access to an [Orkes Conductor](https://orkes.io/) server (cloud or local). To get started quickly, create a free account for the Developer Edition at [https://developer.orkescloud.com/](https://developer.orkescloud.com/). After signing up, obtain your application credentials by navigating to **Access Control > Application** in the Orkes Cloud dashboard. Use these credentials to configure your connection to Conductor.
 - API keys for Orkes Conductor (set as environment variables)
-- [OpenAI API key](https://platform.openai.com/api-keys). Sign up or log in to your OpenAI account and generate an API key at this link.
+- [OpenAI API key](https://platform.openai.com/api-keys). 
 
 ## Setup
 
@@ -57,9 +57,12 @@ This project is a Node.js starter template that demonstrates how to build and ru
    CONDUCTOR_SERVER_URL=<your-conductor-server-url>
    CONDUCTOR_AUTH_KEY=<your-conductor-api-key>
    CONDUCTOR_AUTH_SECRET=<your-conductor-api-secret>
-   OPENAI_API_KEY=<your-openai-api-key>
    ```
+4. **Make the OPENAI API Key available to your application:**
 
+  ```zsh
+  export OPENAI_API_KEY=<your-openai-api-key>
+  ```
 ## Running the Workers
 
 Start the agent workers (they will connect to Conductor and begin polling for tasks):
