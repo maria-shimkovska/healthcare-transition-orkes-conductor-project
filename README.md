@@ -117,7 +117,7 @@ This project includes a utility script, `create-workflow.mjs`, to help you regis
 
 ### What does it do?
 - Reads workflow JSON files (from `workflows/` by default)
-- Registers all SIMPLE task types found in those workflows (auto-creates them if missing)
+- Registers all Worker task types found in those workflows (auto-creates them if missing)
 - Registers any required HUMAN task form templates (if referenced)
 - Registers the workflow definitions themselves
 - Supports dry-run/plan mode and overwrite options
