@@ -31,8 +31,8 @@ This project is a Node.js starter template that demonstrates how to build and ru
 
 1. **Clone the repository** (if not already):
    ```zsh
-   git clone <your-repo-url>
-   cd stackblitz-starters-yczenzzh
+   git clone healthcare-transition-orkes-conductor-project
+   cd healthcare-transition-orkes-conductor-project
    ```
 
 2. **Install dependencies:**
